@@ -1,0 +1,100 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true
+        applicationId "com.chat.sm.ct"
+        minSdkVersion 15
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+    signingConfigs {
+        config {
+            keyAlias 'zxt'
+            keyPassword '52189913'
+            storeFile file('E:/workplace/zxt_phone/zxt_jsk.jks')
+            storePassword '52189913'
+        }
+    }
+    buildTypes {
+        release {
+
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    //网络请求
+    implementation 'com.zhy:okhttputils:2.6.2'
+    //注解
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    //指示器
+    implementation 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
+    //通过标签直接生成shape
+    implementation 'com.noober.background:core:1.3.8'
+    //解决64K方法数
+    implementation 'com.android.support:multidex:1.0.2'
+    //RecyclerView Adapter
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.40'
+    //JSON解析
+    implementation 'com.google.code.gson:gson:2.7'
+
+    //图片加载
+    implementation "com.github.bumptech.glide:glide:4.8.0"
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
+
+    //插件
+    implementation 'com.didi.virtualapk:core:0.9.8'
+
+    //轮播图
+    implementation 'com.youth.banner:banner:1.4.10'  //最新版本
+
+    //刷新
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-14'
+    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-14'
+    //没有使用特殊Header
+
+
+    //二维码 公共服务 法律咨询 附件下载 选择二维码下载
+    implementation 'com.google.zxing:core:3.3.0'
+
+    //修改的一些控件
+    //RecyclerView(RecyclerView+SmartFreshLayout)
+    //Dialog -> 暂时觉得适用于数据提交的时的对话框
+    implementation project(path: ':common_library')
+
+    //Toast https://github.com/GrenderG/Toasty
+    implementation 'com.github.GrenderG:Toasty:1.3.1'
+
+    //暂时打包也同时打包Leak
+    releaseImplementation ('com.squareup.leakcanary:leakcanary-android:1.6.2'){
+        exclude group: 'com.android.support'
+    }
+    implementation ('com.squareup.leakcanary:leakcanary-support-fragment:1.6.2'){
+        exclude group: 'com.android.support'
+    }
+    //沉浸式状态栏
+    implementation 'com.gyf.immersionbar:immersionbar:2.3.3-beta15'
+}
