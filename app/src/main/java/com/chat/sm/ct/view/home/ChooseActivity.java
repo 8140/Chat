@@ -9,7 +9,7 @@ import sm.baseactivity.BaseActivity;
  * @date: 2019/1/31 9:52
  * @description:
  */
-public class ChooseLoginRegisterActivity extends BaseActivity {
+public class ChooseActivity extends BaseActivity {
     @Override
     public void initView() {
 
