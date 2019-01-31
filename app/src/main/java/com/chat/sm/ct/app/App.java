@@ -17,7 +17,6 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         initLeakCanary();
-//        /xxxxxxxxxx
     }
     /**
      * 实例化内存泄露工具
